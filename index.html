@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alerta de Enchente - Itajubá</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; text-align: center; }
+    header { background: #1565c0; color: #fff; padding: 16px; }
+    #status { margin: 24px auto; padding: 24px; width: 85%; max-width: 400px;
+              border-radius: 12px; color: #fff; font-size: 28px; font-weight: bold; background: #888; }
+    .NORMAL { background: #2e7d32 !important; }
+    .ATENCAO { background: #f9a825 !important; }
+    .ALERTA { background: #c62828 !important; }
+    .card { background: #fff; margin: 12px auto; padding: 14px; width: 85%; max-width: 400px;
+            border-radius: 8px; box-shadow: 0 1px 4px #0003; }
+    small { color: #666; }
+  </style>
+</head>
+<body>
+  <header><h2>Alerta de Enchente</h2>Itajubá - MG</header>
+  <div id="status">Carregando...</div>
+  <div class="card">Chuva nas últimas 24h: <b id="c24">-</b> mm</div>
+  <div class="card">Previsão próximas 6h: <b id="p6">-</b> mm</div>
+  <div class="card">Previsão próximas 24h: <b id="p24">-</b> mm</div>
+  <p><small>Atualizado em: <span id="hora">-</span></small></p>
+
+  <script>
+    async function carregar() {
+      try {
+        const r = await fetch("dados.json?t=" + Date.now());
+        const d = await r.json();
+        const s = document.getElementById("status");
+        s.textContent = d.status === "ATENCAO" ? "ATENÇÃO" : d.status;
+        s.className = d.status;
+        document.getElementById("c24").textContent = d.chuva_ultimas_24h_mm;
+        document.getElementById("p6").textContent = d.chuva_proximas_6h_mm;
+        document.getElementById("p24").textContent = d.chuva_proximas_24h_mm;
+        document.getElementById("hora").textContent = d.atualizado_em;
+      } catch (e) {
+        document.getElementById("status").textContent = "Erro ao carregar";
+      }
+    }
+    carregar();
+    setInterval(carregar, 5 * 60 * 1000);
+  </script>
+</body>
+</html>
