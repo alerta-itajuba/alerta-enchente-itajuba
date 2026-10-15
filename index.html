@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alerta de Enchente - Itajubá</title>
+    <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1565c0">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; text-align: center; }
     header { background: #1565c0; color: #fff; padding: 16px; }
@@ -42,6 +45,9 @@
       }
     }
     carregar();
+        if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
     setInterval(carregar, 5 * 60 * 1000);
   </script>
 </body>
