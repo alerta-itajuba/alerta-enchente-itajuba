@@ -18,6 +18,10 @@
     .card { background: #fff; margin: 12px auto; padding: 14px; width: 85%; max-width: 400px;
             border-radius: 8px; box-shadow: 0 1px 4px #0003; }
     small { color: #666; }
+        .botao { display: block; margin: 16px auto; padding: 14px; width: 85%; max-width: 400px;
+             background: #1565c0; color: #fff; text-decoration: none; border-radius: 8px;
+             font-weight: bold; box-sizing: border-box; }
+    .aviso { color: #666; font-size: 12px; width: 85%; max-width: 400px; margin: 8px auto 24px; }
   </style>
 </head>
 <body>
@@ -27,6 +31,13 @@
   <div class="card">Previsão próximas 6h: <b id="p6">-</b> mm</div>
   <div class="card">Previsão próximas 24h: <b id="p24">-</b> mm</div>
   <p><small>Atualizado em: <span id="hora">-</span></small></p>
+    <a class="botao" href="https://aovivo.alertaitajuba.com.br/dados" target="_blank" rel="noopener">
+    Ver nível dos rios ao vivo (Defesa Civil)
+  </a>
+  <p class="aviso">
+    Este app é informativo e não substitui as orientações da Defesa Civil.
+    O status é calculado a partir da previsão de chuva. Em caso de emergência, ligue para a Defesa Civil.
+  </p>
 
   <script>
     async function carregar() {
