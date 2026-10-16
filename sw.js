@@ -1,4 +1,4 @@
-const CACHE = "alerta-enchente-v1";
+const CACHE = "alerta-enchente-v2";
 const ARQUIVOS = ["./", "./index.html", "./manifest.json",
   "./icon-192.png", "./icon-512.png"];
 
